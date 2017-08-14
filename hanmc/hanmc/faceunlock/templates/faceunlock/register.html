@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Register</title>
+{% extends 'faceunlock/base.html' %}
+{% block title %}Register{% endblock %}
+{% block css %}
 	<style type="text/css">
 		p{
 			text-align:center;
 		}
 	</style>
-</head>
-<body>
+{% endblock %}
+{% block body %}
 	<div class="div_1">
 		<form action="{% url 'faceunlock:register' %}" method="post" >
 			{% csrf_token %}
@@ -16,5 +15,4 @@
 			<p><button type="submit">Register</button></p>
 		</form>
 	</div>
-</body>
-</html>
+{% endblock %}

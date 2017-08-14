@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    {% load staticfiles %}
-    <meta charset="utf-8">
-	<title>faceunlock</title>
-	<link rel="shortcut icon" href="{% static 'faceunlock/images/favicon.ico' %}" type="image/hmc-icon" />
-	<link rel="icon" href="{% static 'faceunlock/images/favicon.ico' %}" type="image/hmc-icon" />
-</head>
-<body>
+{% extends 'faceunlock/base.html' %}
+{% block title %}faceunlock{% endblock %}
+{% block body %}
 	<div>
 		{% if account %}
 			<p>欢迎您，{{nickname}}!</p>
@@ -21,6 +14,4 @@
 			<a href="{% url 'faceunlock:register'%}">注册</a>
 		{% endif %}
 	</div>
-
-</body>
-</html>
+{% endblock %}

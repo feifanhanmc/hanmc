@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Login by pwd</title>
+{% extends 'faceunlock/base.html' %}
+{% block title %}Login by pwd{% endblock %}
+{% block css %}
 	<style type="text/css">
 		p{
 			text-align:center;
 		}
 	</style>
-</head>
-<body>
+{% endblock %}
+{% block body %}
 	<div>
 		<form action="{% url 'faceunlock:login_by_pwd' %}" method="post">
 			{% csrf_token %}
@@ -17,5 +16,4 @@
 		</form>
 		<p><a href="{% url 'faceunlock:register' %}">注册</a></p>
 	</div>
-</body>
-</html>
+{% endblock %}
