@@ -1,0 +1,18 @@
+<html>
+    <head>
+    	{% load staticfiles %}
+    	<meta charset="utf-8">
+		<title>{% block title %}{% endblock %}</title>
+		<link rel="shortcut icon" href="{% static 'home/images/favicon.ico' %}" type="image/hmc-icon" />
+		<link rel="icon" href="{% static 'home/images/favicon.ico' %}" type="image/hmc-icon" />
+    </head>
+	<style>
+	    body{
+	    	text-align: center;
+	    }
+	</style>
+	<body>
+	{% block body %}
+	{% endblock %}
+	</body>
+</html>
