@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register</title>
+	<style type="text/css">
+		p{
+			text-align:center;
+		}
+	</style>
+</head>
+<body>
+	<div class="div_1">
+		<form action="{% url 'faceunlock:register' %}" method="post" >
+			{% csrf_token %}
+			{{ form.as_p }}
+			<p><button type="submit">Register</button></p>
+		</form>
+	</div>
+</body>
+</html>

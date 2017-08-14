@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login by pwd</title>
+	<style type="text/css">
+		p{
+			text-align:center;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<form action="{% url 'faceunlock:login_by_pwd' %}" method="post">
+			{% csrf_token %}
+    		{{ form.as_p }}
+			<p><button type="submit">Login</button></p>
+		</form>
+		<p><a href="{% url 'faceunlock:register' %}">注册</a></p>
+	</div>
+</body>
+</html>

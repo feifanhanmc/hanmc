@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+	<title>faceunlock</title>
+	<link rel="shortcut icon" href="{% static 'faceunlock/images/favicon.ico' %}" type="image/hmc-icon" />
+	<link rel="icon" href="{% static 'faceunlock/images/favicon.ico' %}" type="image/hmc-icon" />
+</head>
+<body>
+	<div>
+		{% if account %}
+			<p>欢迎您，{{nickname}}!</p>
+			<a href="{% url 'faceunlock:logout' %}">登出</a>
+			{% if has_faceset %}
+			{% else %}
+				<a href="{% url 'faceunlock:add_faceset' %}">录入人脸登陆数据</a>
+			{% endif %}
+		{% else %}
+			<a href="{% url 'faceunlock:login_by_face'%}">登录</a>
+			<a href="{% url 'faceunlock:register'%}">注册</a>
+		{% endif %}
+	</div>
+
+</body>
+</html>

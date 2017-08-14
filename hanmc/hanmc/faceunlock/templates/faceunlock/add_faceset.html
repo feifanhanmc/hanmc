@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load staticfiles %}
+	<meta charset="utf-8">
+	<title>Add faceset</title>
+	<script type="text/javascript" src="{% static 'faceunlock/js/openCamera.js' %}"></script>
+	<style type="text/css">
+		body{ text-align:center} 
+		#div_1{margin:0 auto} 
+	</style>
+</head>
+<body>
+	<div id="div_1">
+		<!-- <form id="form_1" method="post" enctype="multipart/form-data"> -->
+			<video id="video" width="640" height="480" autoplay></video>
+			<button id="snap" autofocus="autofocus">拍照</button>
+			<canvas id="canvas" width="640" height="480"></canvas>
+		<!-- </form> -->
+	</div>
+</body>
+</html>
