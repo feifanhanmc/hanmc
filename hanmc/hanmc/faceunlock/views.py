@@ -6,6 +6,8 @@ from django.core.urlresolvers import reverse
 from .models import User
 from .forms import LoginByPwdForm, RegisterForm 
 from twisted.python.formmethod import Password
+from django.views.decorators.csrf import csrf_exempt
+import facepp
 
 def index(request):
     context = {}
@@ -57,16 +59,28 @@ def login_by_pwd(request):
             return HttpResponseRedirect(reverse('faceunlock:index'))
     else:
         form = LoginByPwdForm()
-    return render(request, 'faceunlock/login_by_pwd.html', {'form':form})
+        return render(request, 'faceunlock/login_by_pwd.html', {'form':form})
 
 def logout(request):
-    context = {}
     try:
         del request.session['account']
     except KeyError:
         pass
     return HttpResponseRedirect(reverse('faceunlock:index'))
 
+@csrf_exempt
 def add_faceset(request):
+    if request.method == 'POST':
+        image_base64 = request.POST.get('dataUrl')[22:]
+        outer_id = request.session['account']
+        #upload image(image_base64) to facepp 
+        api = facepp.API(key='FR2qXQzfPwSzjZNC1KSdQBiJD8h_sVIx', secret='0M7jG1b4nxdp6eBH8nnirkcefUWD91C-')
+        api.faceset.create(outer_id=outer_id)
+        res = api.detect(image_base64=image_base64)
+        api.faceset.addface(outer_id=outer_id, face_tokens=res["faces"][0]["face_token"])
+        #设置session    @2017-8-19 00:14:28目前设置的这个session好像并没有用
+        request.session['has_faceset'] = True
+        #下面这个其实并没有发挥作用，可能是什么异步的原因，log显示这条虽然执行了，但是页面当时并没有跳转
+        return HttpResponseRedirect(reverse('faceunlock:index'))
+        
     return render(request, 'faceunlock/add_faceset.html')
-

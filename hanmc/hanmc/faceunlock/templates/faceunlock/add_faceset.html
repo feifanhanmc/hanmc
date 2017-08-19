@@ -5,12 +5,14 @@
 		#div_1{margin:0 auto} 
 	</style>
 {% endblock %}
+{% load staticfiles %}
+{% block js %}
+	<script type="text/javascript" src="{% static 'faceunlock/js/openCamera.js' %}"></script>
+{% endblock %}
 {% block body %}
 	<div id="div_1">
-		<!-- <form id="form_1" method="post" enctype="multipart/form-data"> -->
-			<video id="video" width="640" height="480" autoplay></video>
-			<button id="snap" autofocus="autofocus">拍照</button>
-			<canvas id="canvas" width="640" height="480"></canvas>
-		<!-- </form> -->
+		<video id="video" width="640" height="480" autoplay></video>
+		<button id="snap" autofocus="autofocus">拍照</button>
+		<canvas id="canvas" width="640" height="480"></canvas>
 	</div>
 {% endblock %}

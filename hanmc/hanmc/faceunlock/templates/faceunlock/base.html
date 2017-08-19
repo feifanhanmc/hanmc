@@ -3,15 +3,18 @@
     	{% load staticfiles %}
     	<meta charset="utf-8">
 		<title>{% block title %}{% endblock %}</title>
-		<link rel="shortcut icon" href="{% static 'home/images/favicon.ico' %}" type="image/hmc-icon" />
-		<link rel="icon" href="{% static 'home/images/favicon.ico' %}" type="image/hmc-icon" />
+		<link rel="shortcut icon" href="{% static 'faceunlock/images/favicon.ico' %}" type="image/hmc-icon" />
+		<link rel="icon" href="{% static 'faceunlock/images/favicon.ico' %}" type="image/hmc-icon" />
+		<style>
+		    body{
+		    	text-align: center;
+		    }
+		</style>
+		{% block css %}{% endblock %}
+		<script type="text/javascript" src="{% static 'faceunlock/js/jquery-3.2.1.min.js' %}"></script>
+		{% block js %}{% endblock %}
     </head>
-	<style>
-	    body{
-	    	text-align: center;
-	    }
-	</style>
-	{% block css %}{% endblock %}
+	
 	<body>
 	{% block body %}
 	{% endblock %}
